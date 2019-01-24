@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpBackend, HttpErrorResponse, HttpRequest, HttpResponse } from '@angular/common/http';
 
-import { throwError, Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 
 import { RestangularHelper } from './ngx-restangular-helper';
 import { catchError, filter, map } from 'rxjs/operators';
@@ -40,7 +40,7 @@ export class RestangularHttp {
           return this.request(newRequest || request);
         };
 
-        return throwError(err);
+        return of(err);
       })
     );
   }
